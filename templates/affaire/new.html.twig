@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Affaire{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle Affaire</h1>
+    <div class="col-md-2">
+    {{ include('affaire/_form.html.twig') }}
+    </div>
+
+    <a class="btn btn-light" href="{{ path('affaire_index') }}">retour a la liste</a>
+{% endblock %}

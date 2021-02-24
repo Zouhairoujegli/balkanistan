@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mairie index{% endblock %}
+
+{% block body %}
+    <h1>Mairie</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mairie in mairies %}
+            <tr>
+                <td>{{ mairie.id }}</td>
+                <td>{{ mairie.ville }}</td>
+                <td>
+                    <a href="{{ path('mairie_show', {'id': mairie.id}) }}">voir</a>
+                    <a href="{{ path('mairie_edit', {'id': mairie.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('mairie_new') }}"> Creation </a>
+{% endblock %}

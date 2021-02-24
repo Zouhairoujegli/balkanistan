@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Politicien{% endblock %}
+
+{% block body %}
+    <h1>Creation Politicien</h1>
+    <div class="col-md-2">
+
+        {{ include('politicien/_form.html.twig') }}
+    </div>
+
+    <a class="btn btn-light" href="{{ path('politicien_index') }}">retour a la liste</a>
+{% endblock %}

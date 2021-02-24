@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Affaire {% endblock %}
+
+{% block body %}
+    <h1>Affaire </h1>
+     <div class="row">
+        <div class="col-4">
+            {{ form_start(form) }}
+                {{ form_row(form.designation) }}
+                <button class="btn btn-primary" type="submit">Recherche</button>
+            {{ form_end(form) }}
+        </div>
+     </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affaire in affaires %}
+            <tr>
+                <td>{{ affaire.id }}</td>
+                <td>{{ affaire.designation }}</td>
+                <td>
+                    <a href="{{ path('affaire_show', {'id': affaire.id}) }}">voir</a>
+                    <a href="{{ path('affaire_edit', {'id': affaire.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('affaire_new') }}"> creation </a>
+{% endblock %}

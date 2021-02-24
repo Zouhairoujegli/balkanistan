@@ -1,0 +1,9 @@
+{% if is_granted('ROLE_ADMIN') %}
+<form method="post" action="{{ path('politicien_delete', {'id': politicien.id}) }}" onsubmit="return confirm('est ce que vous etes sur de supprimer le politicien');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ politicien.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+{% else %}
+
+{% endif %}

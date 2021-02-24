@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politicien {% endblock %}
+
+{% block body %}
+    <h1>Politicien </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Sexe</th>
+                <th>Age</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for politicien in politiciens %}
+            <tr>
+                <td>{{ politicien.id }}</td>
+                <td>{{ politicien.nom }}</td>
+                <td>{{ politicien.sexe }}</td>
+                <td>{{ politicien.age }}</td>
+                <td>
+                    <a href="{{ path('politicien_show', {'id': politicien.id}) }}">voir</a>
+                    <a href="{{ path('politicien_edit', {'id': politicien.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('politicien_new') }}">Creation</a>
+{% endblock %}

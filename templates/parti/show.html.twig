@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parti{% endblock %}
+
+{% block body %}
+    <h1>Parti</h1>
+     <div  class="col-md-4">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parti.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ parti.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de femme</th>
+                <td>
+                    {% for femme in nombreFemme[0]  %}
+                        {{ femme }} 
+                    {% endfor %}
+                </td>
+            </tr>
+             <tr>
+                <th>Nombre d'homme</th>
+                <td>
+                    {% for homme in nombrehomme[0]  %}
+                        {{ homme }} 
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Moyenne age</th>
+                <td>
+                     {% for moyenne in moyenne[0]  %}
+                        {{ moyenne }} 
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Politiciens</th>
+                <td>
+                    {% for politicien in parti.politiciens  %}
+                        {{ politicien.nom }} -
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Actions</th>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                              <a class="btn btn-primary mr-4" href="{{ path('parti_edit', {'id': parti.id}) }}">editer</a>
+                        </div>
+                        <div class="col">
+                            {{ include('parti/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <a class="btn btn-light" href="{{ path('parti_index') }}">retour a la liste</a>
+
+{% endblock %}

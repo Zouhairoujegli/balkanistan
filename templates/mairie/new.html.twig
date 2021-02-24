@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouvelle Mairie {% endblock %}
+
+{% block body %}
+    <h1>Ajouter une Mairie</h1>
+    <div class="col-md-2">
+
+    {{ include('mairie/_form.html.twig') }}
+    </div>
+    <a class="btn btn-light" href="{{ path('mairie_index') }}">Retour a la liste</a>
+{% endblock %}

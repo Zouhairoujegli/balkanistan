@@ -1,0 +1,10 @@
+{% if is_granted('ROLE_ADMIN') %}
+<form method="post" action="{{ path('mairie_delete', {'id': mairie.id}) }}" onsubmit="return confirm('Est ce que vous êtes sûr de supprimer cette Mairie ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ mairie.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
+{% else %}
+
+{% endif %}
+

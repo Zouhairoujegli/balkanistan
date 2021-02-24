@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Parti {% endblock %}
+
+{% block body %}
+    <h1>Parti </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parti in partis %}
+            <tr>
+                <td>{{ parti.id }}</td>
+                <td>{{ parti.nom }}</td>
+                <td>
+                    <a href="{{ path('parti_show', {'id': parti.id}) }}">voir</a>
+                    <a href="{{ path('parti_edit', {'id': parti.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('parti_new') }}">Creation</a>
+{% endblock %}
